@@ -6,7 +6,11 @@ then
 echo $1
 
 for i in $*; do 
-   echo "$(curl $i)"
+   theHTML="$(curl $i)"
+   curl $i -I -o headers -s
+   cat headers
+   cat headers | head -n 1 | cut '-d ' '-f2'
+   echo "$theHTML"
 done
 
 #echo "$(wc $FILE1)"
