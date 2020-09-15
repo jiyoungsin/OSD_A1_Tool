@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [ $# -gt 0 ]
+then
+
+echo $1
+
+for i in $*; do 
+   echo "$(curl $i)"
+done
+
+#echo "$(wc $FILE1)"
+
+else
+
+echo "Hello Please Enter html Document"
+
+read URL
+
+echo "The Url is: $URL"
+
+echo "$(curl $URL > text.txt)"
+
+echo "the HTML \n"
+
+echo "$(curl $URL)"
+
+#echo "$(curl $URL | grep 'http' | wc -l)"
+
+fi
