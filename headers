@@ -1,15 +1,13 @@
 HTTP/1.1 200 OK
-Date: Tue, 15 Sep 2020 09:36:43 GMT
-Server: Apache/2.4.6 (CentOS) mpm-itk/2.4.7-04 OpenSSL/1.0.2k-fips mod_fcgid/2.3.9 PHP/7.4.10
-X-Powered-By: PHP/7.4.10
-X-Content-Type-Options: nosniff
-Set-Cookie: cpPosTime=1600162603.4882; expires=Tue, 15-Sep-2020 09:37:43 GMT; Max-Age=60; path=/; secure; HttpOnly
-Content-language: en
-X-UA-Compatible: IE=Edge
-Link: </w/skins/common/images/OSS_155x155.png?1d277>;rel=preload;as=image
-Vary: Accept-Encoding,Cookie
-Expires: Thu, 01 Jan 1970 00:00:00 GMT
-Cache-Control: private, must-revalidate, max-age=0
-Last-Modified: Tue, 15 Sep 2020 02:05:43 GMT
+X-Robots-Tag: noindex, nofollow
 Content-Type: text/html; charset=UTF-8
+Expires: Thu, 17 Sep 2020 07:27:17 GMT
+Date: Thu, 17 Sep 2020 07:27:17 GMT
+Cache-Control: private, max-age=0
+Last-Modified: Fri, 28 Feb 2020 14:58:48 GMT
+ETag: "9b3efb6c-0f0f-4c31-bb8c-a31d2b9d236c"
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Length: 0
+Server: GSE
 

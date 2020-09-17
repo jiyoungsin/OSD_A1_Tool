@@ -1,34 +1,36 @@
 #!/bin/bash
 
-if [ $# -gt 0 ]
+theURL="$(grep -Eo '(http|https)://[^/"]+' $1)"
+
+number=0
+echo | set /p=1
+
+for i in $(grep -Eo '(http|https)://[^/"]+' $1)
+do
+let "number+=1"
+curl $i -I -o headers -s &
+echo "Processing Link number $number : $(cat headers | head -n 1 | cut '-d ' '-f2')"
+statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
+
+if [[ statusCode -eq 200 ]]
+then 
+
+echo "Good Link"
+
+elif [[ statusCode -eq 404 ]]
 then
-
-echo $1
-
-for i in $*; do 
-   theHTML="$(curl $i)"
-   curl $i -I -o headers -s
-   cat headers
-   cat headers | head -n 1 | cut '-d ' '-f2'
-   echo "$theHTML"
-done
-
-#echo "$(wc $FILE1)"
+echo "Bad Link"
+elif [[ statusCode -eq 400 ]]
+then
+echo "Bad Link"
 
 else
 
-echo "Hello Please Enter html Document"
-
-read URL
-
-echo "The Url is: $URL"
-
-echo "$(curl $URL > text.txt)"
-
-echo "the HTML \n"
-
-echo "$(curl $URL)"
-
-#echo "$(curl $URL | grep 'http' | wc -l)"
+echo "unknown"
 
 fi
+
+sleep 0.05
+pkill curl 
+
+done
