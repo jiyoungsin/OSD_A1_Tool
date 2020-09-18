@@ -1,27 +1,85 @@
 #!/bin/bash
+<< 'MULTILINE-COMMENT'
+for arg in "$@"
+do
+    case $arg in
+        -i|--initialize)
+        echo "init"
+        echo "$1"
+	;;
+        -c|--cache)
+        echo "cache"
+        echo "$1"
+	;;
+        *)
+	#default case No Arguements 
+	theURL="$(grep -Eo '(http|https)://[^/"]+' $1)"
+
+	number=0
+
+	for i in $(grep -Eo '(http|https)://[^/"]+' $1)
+	do
+	let "number+=1"
+	curl $i -I  -o headers -s &
+	echo "Processing Link number $number :"
+	statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
+	echo "$statusCode"
+	if [[ statusCode -eq 200 ]]
+	then
+
+	echo "Good Link"
+	
+	
+	elif [[ statusCode -eq 404 ]]
+	then
+
+	echo "Bad Link"
+
+	elif [[ statusCode -eq 400 ]]
+	then
+
+	echo "Bad Link"
+
+	else
+
+	echo "unknown"
+
+	fi
+
+	done
+	echo "$theURL"
+	echo "$1"
+        ;;
+    esac
+done
+MULTILINE-COMMENT
 
 theURL="$(grep -Eo '(http|https)://[^/"]+' $1)"
 
 number=0
-echo | set /p=1
 
 for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 do
 let "number+=1"
-curl $i -I -o headers -s &
+curl $i -Im 3  -o headers -s &
 echo "Processing Link number $number : $(cat headers | head -n 1 | cut '-d ' '-f2')"
 statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
 
-if [[ statusCode -eq 200 ]]
+sleep 0.5
+
+if [[ $statusCode == 200 ]]
 then 
 
 echo "Good Link"
 
-elif [[ statusCode -eq 404 ]]
+elif [[ $statusCode == 400 ]]
 then
+
 echo "Bad Link"
-elif [[ statusCode -eq 400 ]]
+
+elif [[ $statusCode == 404 ]]
 then
+
 echo "Bad Link"
 
 else
@@ -30,7 +88,8 @@ echo "unknown"
 
 fi
 
-sleep 0.05
-pkill curl 
+echo " "
 
 done
+
+pkill curl
