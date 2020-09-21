@@ -1,4 +1,10 @@
 #!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
 << 'MULTILINE-COMMENT'
 for arg in "$@"
 do
@@ -62,7 +68,7 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 do
 let "number+=1"
 curl $i -Im 3  -o headers -s &
-echo "Processing Link number $number : $(cat headers | head -n 1 | cut '-d ' '-f2')"
+echo "$i : $(cat headers | head -n 1 | cut '-d ' '-f2')"
 statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
 
 sleep 0.5
@@ -70,21 +76,21 @@ sleep 0.5
 if [[ $statusCode == 200 ]]
 then 
 
-echo "Good Link"
+printf "${GREEN}Good Link${NC}\n"
 
 elif [[ $statusCode == 400 ]]
 then
 
-echo "Bad Link"
+printf "${RED}Bad Link${NC}\n"
 
 elif [[ $statusCode == 404 ]]
 then
 
-echo "Bad Link"
+printf "${RED}Bad Link${NC}\n"
 
 else
 
-echo "unknown"
+printf "${YELLOW}Unknown${NC}\n"
 
 fi
 
