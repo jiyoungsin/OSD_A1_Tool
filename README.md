@@ -17,6 +17,13 @@ Command : ./cliCommand <theFile>
 Url Checker V0.1
 
 
+![OSDgif](https://user-images.githubusercontent.com/44411777/93946180-9171b200-fd06-11ea-90fe-06c34cbee5c5.gif)
+
+
+
+
+Feel free to play with codes, if you have a crazy idea, then pull request :)
+
 # Scope
 
 create a command-line tool in your chosen language.
