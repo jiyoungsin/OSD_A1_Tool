@@ -1,5 +1,19 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]
+then
+
+printf "Please enter the html file\n"
+printf "Ex. ./cliCommand <theFile.txt>\n"
+exit
+fi
+
+if [ $1 = -v ]
+then
+printf "v0.1\n"
+exit
+fi 
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
