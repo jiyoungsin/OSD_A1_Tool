@@ -1,11 +1,12 @@
-HTTP/2 200 
-server: nginx
-date: Tue, 22 Sep 2020 20:56:52 GMT
-content-type: text/html; charset=UTF-8
-vary: Accept-Encoding
-vary: Cookie
-x-hacker: If you're reading this, you should visit automattic.com/jobs and apply to join the fun, mention this header.
-link: <https://wp.me/9awAg>; rel=shortlink
-x-ac: 1.yyz _dca 
-strict-transport-security: max-age=15552000
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Expires: Tue, 22 Sep 2020 23:29:19 GMT
+Date: Tue, 22 Sep 2020 23:29:19 GMT
+Cache-Control: private, max-age=0
+Last-Modified: Sat, 29 Feb 2020 02:46:20 GMT
+ETag: "b8d9db76-57d2-4e77-a797-7f6723aa1eb4"
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Length: 0
+Server: GSE
 
