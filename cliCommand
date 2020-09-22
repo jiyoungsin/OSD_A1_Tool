@@ -13,10 +13,10 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 do
 let "number+=1"
 curl $i -Im 3  -o headers -s &
-echo "$i : $(cat headers | head -n 1 | cut '-d ' '-f2')"
+printf "$i : $(cat headers | head -n 1 | cut '-d ' '-f2') "
 statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
 
-sleep 0.5
+sleep 0.05
 
 if [[ $statusCode == 200 ]]
 then 
@@ -39,7 +39,7 @@ printf "${YELLOW}Unknown${NC}\n"
 
 fi
 
-echo " "
+#printf " "
 
 done
 
