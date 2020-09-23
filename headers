@@ -1,12 +1,16 @@
 HTTP/1.1 200 OK
-Content-Type: text/html; charset=UTF-8
-Expires: Tue, 22 Sep 2020 23:29:19 GMT
-Date: Tue, 22 Sep 2020 23:29:19 GMT
-Cache-Control: private, max-age=0
-Last-Modified: Sat, 29 Feb 2020 02:46:20 GMT
-ETag: "b8d9db76-57d2-4e77-a797-7f6723aa1eb4"
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Content-Length: 0
-Server: GSE
+Server: openresty
+Date: Wed, 23 Sep 2020 00:40:02 GMT
+Content-Type: text/html
+Content-Length: 2522
+Last-Modified: Fri, 18 Sep 2020 21:34:25 GMT
+ETag: "5f6527e1-9da"
+X-Adblock-Key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJRmzcpTevQqkWn6dJuX/N/Hxl7YxbOwy8+73ijqYSQEN+WGxrruAKtZtliWC86+ewQ0msW1W8psOFL/b00zWqsCAwEAAQ_DKpKLfTcKrOJpNpGFGp2Dsz3fh/F3HbtLQGDHFoHaAeweai74f95VOg/98UqeZizKo+qlkvOgQC959jyOEoV9w
+Set-Cookie: system=PW;Path=/;Max-Age=86400;
+Set-Cookie: caf_ipaddr=184.145.101.117;Path=/;Max-Age=86400;
+Set-Cookie: country=CA;Path=/;Max-Age=86400;
+Set-Cookie: city=;Path=/;Max-Age=86400;
+Set-Cookie: traffic_target=gd;Path=/;Max-Age=86400;
+Accept-Ranges: bytes
+Via: 1.1 google
 

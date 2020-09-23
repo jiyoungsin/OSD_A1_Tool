@@ -1,59 +1,56 @@
 #!/bin/bash
 
-if [ $# -eq 0 ]
-then
-
-printf "Please enter the html file\n"
-printf "Ex. ./cliCommand <theFile.txt>\n"
-exit
-fi
-
-if [ $1 = -v ]
-then
-printf "v0.1\n"
-exit
-fi 
-
-RED='\033[0;31m'
+RED='\033[0;31m' 
 GREY='\033[0;37m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-theURL="$(grep -Eo '(http|https)://[^/"]+' $1)"
 
+
+if [ $# -eq 0 ]
+  then
+	printf "Please enter the html file\n"
+	printf "Ex. ./cliCommand <theFile.txt>\n"
+	exit
+fi
+
+if [ $1 = -v ]
+  then
+	printf "v0.1\n"
+	exit
+fi 
+
+theURL="$(grep -Eo '(http|https)://[^/"]+' $1)"
 number=0
 
 for i in $(grep -Eo '(http|https)://[^/"]+' $1)
-do
-let "number+=1"
-curl $i -Im 3  -o headers -s &
-printf "$i : $(cat headers | head -n 1 | cut '-d ' '-f2') "
-statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
+  do
+	let "number+=1"
+	curl $i -Im 3  -o headers -s &
+	printf "$i : $(cat headers | head -n 1 | cut '-d ' '-f2') "
+	statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
+	sleep 0.05
 
-sleep 0.05
+	if [[ $statusCode == 200 ]]
+	  then 
 
-if [[ $statusCode == 200 ]]
-then 
+		printf "${GREEN}Good Link${NC}\n"
 
-printf "${GREEN}Good Link${NC}\n"
+	elif [[ $statusCode == 400 ]]
+	  then
 
-elif [[ $statusCode == 400 ]]
-then
+		printf "${RED}Bad Link${NC}\n"
 
-printf "${RED}Bad Link${NC}\n"
+	elif [[ $statusCode == 404 ]]
+	  then
 
-elif [[ $statusCode == 404 ]]
-then
+		printf "${RED}Bad Link${NC}\n"
 
-printf "${RED}Bad Link${NC}\n"
+	else
 
-else
+		printf "${GREY}Unknown${NC}\n"
 
-printf "${GREY}Unknown${NC}\n"
-
-fi
-
-#printf " "
+	fi
 
 done
 
