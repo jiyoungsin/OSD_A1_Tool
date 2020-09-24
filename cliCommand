@@ -1,12 +1,14 @@
 #!/bin/bash
 
+# Colors for UI
+
 RED='\033[0;31m' 
 GREY='\033[0;37m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 
-
+# if the user forgot to include arguements.
 if [ $# -eq 0 ]
   then
 	printf "Please enter the html file\n"
@@ -14,21 +16,32 @@ if [ $# -eq 0 ]
 	exit
 fi
 
+# If the user wants to know the version
 if [ $1 = -v ]
   then
 	printf "v0.1\n"
 	exit
 fi 
 
+# I dont think we need this line anymore.
 theURL="$(grep -Eo '(http|https)://[^/"]+' $1)"
+
+# keep track of the number of entries.
 number=0
 
+# Parsing file and looking for all URLS.
 for i in $(grep -Eo '(http|https)://[^/"]+' $1)
   do
 	let "number+=1"
+	# Run curl in the background with a timeout of 3 seconds
 	curl $i -Im 3  -o headers -s &
+	
+	# Print the status Code
 	printf "$i : $(cat headers | head -n 1 | cut '-d ' '-f2') "
+	
+	# Save the status Code
 	statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
+	
 	sleep 0.05
 
 	if [[ $statusCode == 200 ]]
