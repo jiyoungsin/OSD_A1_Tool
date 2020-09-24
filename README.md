@@ -12,6 +12,7 @@ You can find my blog here.
 
 Command : ./cliCommand <theFile>
 
+NOTE: This project will need Bash installed on your machine. Mac OS has bash built in, however, Windows OS may need to install Bash.
 # Init Release:
 
 Url Checker V0.1
