@@ -31,7 +31,7 @@ create a command-line tool in your chosen language.
 
 # How It Works
 
-Using the power of Linux's built in commands, such as, grep, curl and head we can request urls via command line interface. This information is then processed using the Head command along with some additional feautres.
+Using the power of Linux's built in commands, such as, grep, curl and head we can request urls via command line interface. This information is then processed using the Head command along with some additional features.
 We simply check the status code of each URL we requested and let the user know if there are any Broken ( 400 and 404 ) links are found.
 BAD links will be printed in RED
 Good links will be printed in GREEN
