@@ -6,7 +6,7 @@ creating a command-line tool to consider if urls are good, bad, or unknown.
 My name is Paul, welcome to my Open Source Development Repo.
 
 during the next 12 weeks I will be completeing a series of blog posts documenting my experience in the Open Source community. 
-You can find my blog [here](https://www.blogger.com/u/1/blog/post/edit/3618816638550590018/6728308766537184127).
+You can find my blog [here](osd600.blogspot.com).
 
 # Instructions
 
