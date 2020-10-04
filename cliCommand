@@ -17,25 +17,29 @@ if [ $# -eq 0 ]
 fi
 
 # If the user wants to know the version
-if [ $1 = -v ]
+if [ $1 = "-v" ] || [ $1 = "--version" ]
   then
 	printf "v0.1\n"
 	exit
 fi 
 
-# I dont think we need this line anymore.
-theURL="$(grep -Eo '(http|https)://[^/"]+' $1)"
-
 # keep track of the number of entries.
 number=0
 
 # Parsing file and looking for all URLS.
+
 for i in $(grep -Eo '(http|https)://[^/"]+' $1)
   do
 	let "number+=1"
 	# Run curl in the background with a timeout of 3 seconds
-	curl $i -Im 3  -o headers -s &
 	
+	if [ "$2" = "-u" ]
+	then 
+		curl $i -Im 3 -A "$3" -o headers -s &
+	fi	
+	
+	curl $i -Im 3 -o headers -s &
+
 	# Print the status Code
 	printf "$i : $(cat headers | head -n 1 | cut '-d ' '-f2') "
 	

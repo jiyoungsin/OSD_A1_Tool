@@ -41,4 +41,8 @@ Unknown links will be printed in GREY
 # Optional Features Include:
 
 1. Colored code.
-2. option -v will return the current version information.  
+2. option -v will return the current version information. 
+3. option -u will set user agent
+```bash
+./cliCommand [FILE] -u [your-name]
+```  
