@@ -10,7 +10,7 @@ You can find my blog [here](https://osd600.blogspot.com/).
 
 # Instructions
 
-Command : ./cliCommand <theFile>
+Command : ./cliCommand.sh <theFile>
 
 NOTE: This project will need Bash installed on your machine. Mac OS has bash built in, however, Windows OS may need to install Bash.
 # Init Release:
