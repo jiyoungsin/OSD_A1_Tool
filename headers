@@ -1,16 +1,11 @@
 HTTP/1.1 200 OK
-Server: openresty
-Date: Wed, 23 Sep 2020 00:40:02 GMT
 Content-Type: text/html
-Content-Length: 2522
-Last-Modified: Fri, 18 Sep 2020 21:34:25 GMT
-ETag: "5f6527e1-9da"
-X-Adblock-Key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJRmzcpTevQqkWn6dJuX/N/Hxl7YxbOwy8+73ijqYSQEN+WGxrruAKtZtliWC86+ewQ0msW1W8psOFL/b00zWqsCAwEAAQ_DKpKLfTcKrOJpNpGFGp2Dsz3fh/F3HbtLQGDHFoHaAeweai74f95VOg/98UqeZizKo+qlkvOgQC959jyOEoV9w
-Set-Cookie: system=PW;Path=/;Max-Age=86400;
-Set-Cookie: caf_ipaddr=184.145.101.117;Path=/;Max-Age=86400;
-Set-Cookie: country=CA;Path=/;Max-Age=86400;
-Set-Cookie: city=;Path=/;Max-Age=86400;
-Set-Cookie: traffic_target=gd;Path=/;Max-Age=86400;
+Content-Length: 542
+Connection: keep-alive
+Keep-Alive: timeout=15
+Date: Mon, 05 Oct 2020 21:38:24 GMT
+Server: Apache
+Last-Modified: Wed, 02 Sep 2009 01:59:35 GMT
+ETag: "21e-4728e9e622fc0"
 Accept-Ranges: bytes
-Via: 1.1 google
 

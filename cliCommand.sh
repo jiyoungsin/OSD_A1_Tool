@@ -46,29 +46,23 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 	# Save the status Code
 	statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
 	
+	# time for response from curl. improves accuracy to the code.
 	sleep 0.05
 
 	if [[ $statusCode == 200 ]]
 	  then 
-
 		printf "${GREEN}Good Link${NC}\n"
-
 	elif [[ $statusCode == 400 ]]
 	  then
-
 		printf "${RED}Bad Link${NC}\n"
-
 	elif [[ $statusCode == 404 ]]
 	  then
-
 		printf "${RED}Bad Link${NC}\n"
-
 	else
-
 		printf "${GREY}Unknown${NC}\n"
-
 	fi
 
 done
 
+# To ensure that all curls are terminated.
 pkill curl
