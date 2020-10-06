@@ -86,4 +86,6 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 	fi
 done
 
-echo "$?"
+echo "Program Status Code $?"
+echo "0 means there are no errors."
+echo "a non-zero exit code indicates an error."
