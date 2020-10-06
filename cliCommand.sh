@@ -6,8 +6,37 @@ RED='\033[0;31m'
 GREY='\033[0;37m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
+CLICOLOR=1
 
+function get_color_output(){
+	if [[ $1 == 200 ]]
+	then 
+		printf "${GREEN}Good Link ${NC}\n"
+	elif [[ $1 == 400 ]]
+	then
+		printf "${RED}Bad Link ${NC}\n"
+	elif [[ $1 == 404 ]]
+	then
+		printf "${RED}Bad Link ${NC}\n"
+	else
+		printf "${GREY}Unknown ${NC}\n"
+	fi
+}
 
+function get_no_color_output(){
+	if [[ $1 == 200 ]]
+	then 
+		echo "Good Link"
+	elif [[ $1 == 400 ]]
+	then
+		echo "Bad Link"
+	elif [[ $1 == 404 ]]
+	then
+		echo "Bad Link"
+	else
+		echo "Unknown"
+	fi
+}
 # if the user forgot to include arguements.
 if [ $# -eq 0 ]
   then
@@ -32,37 +61,29 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
   do
 	let "number+=1"
 	# Run curl in the background with a timeout of 3 seconds
-	
 	if [ "$2" = "-u" ]
 	then 
 		curl $i -Im 3 -A "$3" -o headers -s &
 	fi	
 	
-	curl $i -Im 3 -o headers -s &
-
-	# Print the status Code
-	printf "$i : $(cat headers | head -n 1 | cut '-d ' '-f2') "
+	headers="$(curl $i -Im 3 -s &)"
 	
 	# Save the status Code
-	statusCode="$(cat headers | head -n 1 | cut '-d ' '-f2')"
+	statusCode="$(echo $headers | cut '-d ' '-f2')"
 	
-	# time for response from curl. improves accuracy to the code.
+	# Print the status Code
+	printf "$i : $statusCode "
+	
+	# Time buffer for curl. Improves accuracy.
 	sleep 0.05
 
-	if [[ $statusCode == 200 ]]
-	  then 
-		printf "${GREEN}Good Link${NC}\n"
-	elif [[ $statusCode == 400 ]]
-	  then
-		printf "${RED}Bad Link${NC}\n"
-	elif [[ $statusCode == 404 ]]
-	  then
-		printf "${RED}Bad Link${NC}\n"
+	# If the user wants color they can Make it Colourful.
+	if [[ $CLICOLOR -eq 0 ]]
+	then
+		get_no_color_output $statusCode
 	else
-		printf "${GREY}Unknown${NC}\n"
+		get_color_output $statusCode
 	fi
-
 done
 
-# To ensure that all curls are terminated.
-pkill curl
+echo "$?"
