@@ -7,6 +7,7 @@ GREY='\033[0;37m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 CLICOLOR=1
+exitCode=0
 
 function get_color_output(){
 	if [[ $1 == 200 ]]
@@ -14,11 +15,14 @@ function get_color_output(){
 		printf "${GREEN}Good Link ${NC}\n"
 	elif [[ $1 == 400 ]]
 	then
+		exitCode=1
 		printf "${RED}Bad Link ${NC}\n"
 	elif [[ $1 == 404 ]]
 	then
+		exitCode=1
 		printf "${RED}Bad Link ${NC}\n"
 	else
+		exitCode=1
 		printf "${GREY}Unknown ${NC}\n"
 	fi
 }
@@ -29,12 +33,28 @@ function get_no_color_output(){
 		echo "Good Link"
 	elif [[ $1 == 400 ]]
 	then
+		exitCode=1
 		echo "Bad Link"
 	elif [[ $1 == 404 ]]
 	then
+		exitCode=1
 		echo "Bad Link"
 	else
+		exitCode=1
 		echo "Unknown"
+	fi
+}
+
+function get_status_Code(){
+	printf "\n --------- Program Status Codes -----------\n"
+	echo "| 0 means there are no errors.             |"
+	echo "| A non-zero exit code indicates an error. |"
+	echo " ------------------------------------------"
+	if [ $exitCode -eq 0 ]
+	then
+		printf "\nProgram Status Code: ${GREEN}$exitCode${NC}\n"
+	else
+		printf "\nProgram Status Code: ${RED}$exitCode${NC}\n"
 	fi
 }
 # if the user forgot to include arguements.
@@ -86,6 +106,4 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 	fi
 done
 
-echo "Program Status Code $?"
-echo "0 means there are no errors."
-echo "a non-zero exit code indicates an error."
+get_status_Code
