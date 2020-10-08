@@ -11,7 +11,7 @@ exitCode=0
 # if the user forgot to include arguements.
 if [ $# -eq 0 ]
   then
-	source how_to_use
+	source get_instructions.sh
 	exit
 fi
 
