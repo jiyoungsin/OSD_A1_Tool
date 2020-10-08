@@ -16,7 +16,7 @@ if [ $# -eq 0 ]
 fi
 
 # If the user wants to know the version
-source version_checker.sh $1
+source get_version.sh $1
 
 # Parsing file and looking for all URLS.
 for i in $(grep -Eo '(http|https)://[^/"]+' $1)
