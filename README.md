@@ -37,6 +37,7 @@ BAD links will be printed in RED
 Good links will be printed in GREEN
 Unknown links will be printed in GREY
 
+Running this program will output a urls.json file that contains all the urls and their status code in a json format.
 
 # Optional Features Include:
 

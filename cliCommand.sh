@@ -7,6 +7,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 CLICOLOR=1
 exitCode=0
+json=0
 
 # if the user forgot to include arguements.
 if [ $# -eq 0 ]
@@ -18,11 +19,16 @@ fi
 # If the user wants to know the version
 source get_version.sh $1
 
+# If the user wants a json output
+if [ $json -eq 0 ]
+	then
+		jsonfile="["
+fi
+
 # Parsing file and looking for all URLS.
 for i in $(grep -Eo '(http|https)://[^/"]+' $1)
   do
 	let "number+=1"
-	# Run curl in the background with a timeout of 3 seconds
 	if [ "$2" = "-u" ]
 	then 
 		curl $i -Im 3 -A "$3" -o headers -s &
@@ -36,6 +42,10 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 	# Print the status Code
 	printf "$i : $statusCode "
 	
+	if [[ $json -eq 0 ]]
+	then
+		jsonfile="$jsonfile{ \"url\": \"$i\", \"status\": $statusCode },"
+	fi
 	# Time buffer for curl. Improves accuracy.
 	sleep 0.05
 
@@ -49,5 +59,11 @@ for i in $(grep -Eo '(http|https)://[^/"]+' $1)
 
 	source get_status_code_output.sh $statusCode
 done
+
+if [ $json -eq 0 ]
+	then
+		jsonfile="$jsonfile]"
+		printf "$jsonfile" | sed 's/\(.*\),/\1 /' > urls.json
+fi
 
 source get_exit_code.sh $exitCode
