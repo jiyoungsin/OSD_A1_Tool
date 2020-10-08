@@ -43,3 +43,6 @@ Running this program will output a urls.json file that contains all the urls and
 
 1. Option -v will return the current version information.  
 2. Colored code. Enable colored code by turning variable CLICOLOR to 1
+
+# Coming soon!
+Option -j will result in a json file being created. listing all of the urls and response codes in json format.
