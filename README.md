@@ -1,11 +1,11 @@
 # OSD_A1_Tool
-creating a command-line tool to consider if urls are good, bad, or unknown.
+Creating a command-line tool to consider if urls are good, bad, or unknown.
 
 # Introduction
 
 My name is Paul, welcome to my Open Source Development Repo.
 
-during the next 12 weeks I will be completeing a series of blog posts documenting my experience in the Open Source community. 
+During the next 12 weeks I will be completeing a series of blog posts documenting my experience in the Open Source community. 
 You can find my blog [here](https://osd600.blogspot.com/).
 
 # Instructions
@@ -27,7 +27,7 @@ Feel free to play with codes, if you have a crazy idea, then pull request :)
 
 # Scope
 
-create a command-line tool in your chosen language.
+Create a command-line tool in your chosen language.
 
 # How It Works
 
@@ -40,5 +40,5 @@ Unknown links will be printed in GREY
 
 # Optional Features Include:
 
-1. Colored code.
-2. option -v will return the current version information.  
+1. Option -v will return the current version information.  
+2. Colored code. Enable colored code by turning variable CLICOLOR to 1
