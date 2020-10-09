@@ -10,7 +10,7 @@ You can find my blog [here](https://osd600.blogspot.com/).
 
 # Instructions
 
-Command : ./cliCommand.sh <theFile>
+Command : ./cliCommand.sh [OPTION] [FILE]
 
 NOTE: This project will need Bash installed on your machine. Mac OS has bash built in, however, Windows OS may need to install Bash.
 # Init Release:
@@ -33,16 +33,18 @@ Create a command-line tool in your chosen language.
 
 Using the power of Linux's built in commands, such as, grep, curl and head we can request urls via command line interface. This information is then processed using the Head command along with some additional features.
 We simply check the status code of each URL we requested and let the user know if there are any Broken ( 400 and 404 ) links are found.
+
 BAD links will be printed in RED
 Good links will be printed in GREEN
 Unknown links will be printed in GREY
 
-Running this program will output a urls.json file that contains all the urls and their status code in a json format.
 
 # Optional Features Include:
 
-1. Option -v will return the current version information.  
-2. Colored code. Enable colored code by turning variable CLICOLOR to 1
+1. Option -h or --help will return the help page.
+2. Option -j or --json will return the urls being checked in a json.
+3. Option -v or --version will return the current version information.
+4. Colored code. Enable colored code by turning variable CLICOLOR to 1 ( default )
 
 # Coming soon!
-Option -j will result in a json file being created. listing all of the urls and response codes in json format.
+Any ideas are welcome!
