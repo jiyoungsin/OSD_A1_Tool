@@ -52,7 +52,7 @@ while true; do
 	jsonfile="["
 	shift;
 	[[ ! -r $1 ]] && {
-		echo "Incorrect Usage: cliCommand.sh -j [FILE]" 
+		echo "Incorrect Usage: cliCommand.sh -j|--json [FILE]" 
 		exit 1
 	}
 	break
