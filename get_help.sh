@@ -1,10 +1,13 @@
+echo
 echo " ----------------------------------------------------------------- "
 echo "|                                                                 |"
 echo "| Usage: cliCommand.sh [OPTION]... [FILE]                         |"
 echo "| Command-line tool to consider if urls are good, bad, or unknown |"
 echo "|                                                                 |"
-echo "|    -v, --version    Print cliCommand version                    |"
-echo "|    -j, --json       Output results to urls.json file            |"
 echo "|    -h, --help       Print this help message                     |"
+echo "|    -v, --version    Print cliCommand version                    |"
+echo "|    -i, --ignore     Ignores list of urls in file                |"
+echo "|    -j, --json       Output results to urls.json file            |"
 echo "|                                                                 |"
 echo " ----------------------------------------------------------------- "
+echo
