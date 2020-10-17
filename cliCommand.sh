@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Checking if branch working or not
+
 # Setting Global Environmental Variables
 source get_environmental_variables.sh
 
