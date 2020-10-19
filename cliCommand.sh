@@ -16,8 +16,8 @@ fi
 source get_information.sh $1
 # Checking users special options "--json"
 source get_json.sh $1
-# Checking users special options "--ignore"
-
+# Checking users special options "--all, --good, or --bad"
+#source get_specific_urls.sh $1 $2
 # source get_ignore.sh $1
 if [ $1 = "-i" ] || [ $1 = "--ignore" ] && [[ -f $2 ]] && [[ -f $3 ]]
 then

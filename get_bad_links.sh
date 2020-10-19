@@ -19,8 +19,11 @@ do
 	statusCode="$(echo $headers | cut '-d ' '-f2')"
 
 	# Print URL and status Code
-	printf "$i : $statusCode "
-
+	if [[ $statusCode -eq 400 ]] || [[ $statusCode -eq 404 ]]
+    then
+        printf "$i : $statusCode "
+    fi 
+ 
 	# if the user would like json append text.
 	if [[ $json -eq 0 ]]
 	then
