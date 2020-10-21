@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Checking if branch working or not
+
 # Setting Global Environmental Variables
 source get_environmental_variables.sh
 
@@ -8,6 +10,7 @@ source get_help.sh $#
 
 # Checking users special options "--version" or "--help"
 source get_information.sh $1
+
 # If the user wants a json output
 if [ $1 = "-j" ] || [ $1 = "--json" ]
 then
