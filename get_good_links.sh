@@ -20,26 +20,16 @@ do
 
 	# Print URL and status Code
 	if [[ $statusCode -eq 200 ]]
-    then
-        printf "$i : $statusCode "
-    fi
-	# if the user would like json append text.
-	if [[ $json -eq 0 ]]
-	then
-		jsonfile="$jsonfile{ \"url\": \"$i\", \"status\": $statusCode },"
+    	then
+        	printf "$i : $statusCode "
+		# Enable colored code by turning variable CLICOLOR to 1
+		if [[ $CLICOLOR -eq 0 ]]
+		then
+			RED='\033[0m'
+			GREY='\033[0m'
+			GREEN='\033[0m'
+		fi
+		# Printing of program Exit code
+		source get_status_code_output.sh $statusCode
 	fi
-
-	# Time buffer for curl. Improves accuracy.
-	sleep 0.01
-
-	# Enable colored code by turning variable CLICOLOR to 1
-	if [[ $CLICOLOR -eq 0 ]]
-	then
-		RED='\033[0m'
-		GREY='\033[0m'
-		GREEN='\033[0m'
-	fi
-
-	# Printing of program Exit code
-	source get_status_code_output.sh $statusCode
 done
