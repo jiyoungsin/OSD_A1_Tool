@@ -4,19 +4,22 @@
 source get_environmental_variables.sh
 
 # if the user forgot to include arguements.
-if [[ $# -eq 0 ]] 
-then
-	source get_help.sh
-	exit 1
-fi
+source get_help.sh $#
 
 # Checking users special options "--version" or "--help"
 source get_information.sh $1
-# Checking users special options "--json"
-source get_json.sh $1
-# Checking users special options "--ignore"
+# If the user wants a json output
+if [ $1 = "-j" ] || [ $1 = "--json" ]
+then
+	jsonfile='['
+	source get_urls_function.sh $2
+	jsonfile="$jsonfile]"
+	printf "$jsonfile" | sed 's/\(.*\),/\1 /' > urls.json
+	source get_exit_code.sh $exitCode
+	exit 0
+fi
 
-# source get_ignore.sh $1
+# Checking users special options "--ignore"
 if [ $1 = "-i" ] || [ $1 = "--ignore" ] && [[ -f $2 ]] && [[ -f $3 ]]
 then
 	theIgnoreFile=$( cat $2 | grep -Eo '(http|https)://[^/"]+' )
@@ -28,5 +31,6 @@ then
 	exit 0
 fi
 
+# Default case
 source get_urls_function.sh $1
 source get_exit_code.sh $exitCode
