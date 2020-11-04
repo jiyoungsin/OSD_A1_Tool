@@ -44,6 +44,7 @@ Unknown links will be printed in GREY
 1. Option -h or --help will return the help page.
 2. Option -j or --json will return the urls being checked in a json.
 3. Option -v or --version will return the current version information.
+4. option -i or --ignore the program will ignore the given urls.
 4. Colored code. Enable colored code by turning variable CLICOLOR to 1 ( default )
 
 # Coming soon!
